@@ -1,0 +1,39 @@
+//----------------- Inicializar el propyecto
+npm init -y
+
+//--------------- Instalar express
+npm install express
+
+//--------------- Instalar nodemon
+npm install -g nodemon
+
+//Luego se crea dentro de la carpeta backend_nodejs la carpeta "src"
+// y dentro de la carpeta "src" se crean: 1 archivo (index.js)
+// y dos carpetas. (controllers y routers)
+
+//Para que la carpeta (node_modules) no se cargue en el github,
+// se debe crear el archivo ".gitignore" dentro de backend_nodejs.
+// lo que debe contener el .gitignore es una línea con node_modules
+ 
+
+###################
+--códigos de respuesta 
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+##### Modificación del package.json para que los comandos se
+    puedan ejecutar con "npm run .."
+
+    "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+    },
+
+    --> npm run start ó npm run dev
+
+-------------MongoDB Compass----------------
+//Herramienta para viasualizar de manera gráfica las bases
+  de datos que tengamos en MongoDB
+  https://www.mongodb.com/try/download/compass
+
+-------- Instalar Mongoose --------
+npm install mongoose
