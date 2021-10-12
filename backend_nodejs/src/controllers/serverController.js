@@ -1,12 +1,5 @@
 const person = require('../models/person');
 
-let users = [
-    { id: 1, nombre: "Geremias", apellido: "Beltran" },
-    { id: 2, nombre: "Isadora", apellido: "Montiel" },
-    { id: 3, nombre: "Laureano", apellido: "Gómez" },
-    { id: 4, nombre: "Carlos", apellido: "Castro" }
-]
-
 class ServerController {
     constructor() {
 
@@ -67,14 +60,12 @@ class ServerController {
     /*deleteUser(req, res) {
         let { id } = req.body;
         console.table({ id });
-
         let tempUser = [];
         users.forEach(element => {
             if (id != element.id) {
                 tempUser.push(element);
             }
         });
-
         users = tempUser;
         if (users != null) {
             res.status(200).json(users);
