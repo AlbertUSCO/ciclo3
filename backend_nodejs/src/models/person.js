@@ -1,42 +1,47 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt-nodejs')
 const schema = mongoose.Schema;
-const bcrypt = require('bcrypt-nodejs');
 
 var personSchema = new schema({
-    local: {
-        id: Number,
-        email: String,
-        password: String
-      },
-      facebook: {
-        id: String,
-        token: String,
-        email: String,
-        password: String
-      },
-      twitter: {
-        id: String,
-        token: String,
-        email: String,
-        password: String
-      },
-      google: {
-        id: String,
-        token: String,
-        email: String,
-        password: String
-      }
-    },{
-      collection: 'personas'
-    });
-// generating a hash
-personSchema.methods.generateHash = function (password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-  };
+firstName: {
+    type: String
+},
+lastName: {
+    type: String
+},
+idNumber: {
+    type: Number,
+    unique: true
+},
+email: {
+    type: String
+},
+password: {
+  type: String
+ 
+}
+},
+
+
+
+{
+    collection: 'personas'
+}
+
+);
+personSchema.methods.isCorrectPassword =function(password , callback){
+  bcrypt.compare(password, this.password, function(err,same){
+    if(err){
+      callback(err);
+    }else{
+      callback(err,same)
+    }
+  });
   
-  // checking if password is valid
-  personSchema.methods.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.local.password);
-  };
+
+}
+
+
+
 
 module.exports = mongoose.model('Persona', personSchema);
